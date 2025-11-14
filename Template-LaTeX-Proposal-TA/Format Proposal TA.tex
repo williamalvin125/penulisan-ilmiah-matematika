@@ -1,0 +1,337 @@
+\documentclass{file/TA-ITS}
+%William Alvin Lidjaja
+
+\makeatletter
+\def\cleardoublepage{\clearpage%
+	\if@twoside
+	\ifodd\c@page\else
+	\vspace*{\fill}
+	\hfill
+	\begin{center}
+		\emph{ }
+	\end{center}
+	\vspace{\fill}
+	\thispagestyle{empty}
+	\newpage
+	\if@twocolumn\hbox{}\newpage\fi
+	\fi
+	\fi
+}
+\makeatother
+\newtheorem{defn}{Definisi}[section]
+\newtheorem{teo}[defn]{Teorema}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{lemmas}[thm]{Lemma}
+\newtheorem{cor}[defn]{Akibat}
+\theoremstyle{definition}
+\newtheorem{con}[defn]{Contoh}
+\theoremstyle{definition}
+\theoremstyle{plain}
+\newtheorem{prop}[defn]{Proposisi}
+\renewcommand{\proofname}{Bukti}
+\renewcommand{\thethm}{\arabic{chapter}.\arabic{thm}}
+
+\newcommand{\norm}[1]{\left\|#1\right\|} % Fungsi norm (||x||)
+
+\newcommand\firstPar{0.75cm} % Indentasi 0.75cm pada tiap paragraf (manual untuk hspace)
+\setlength{\parindent}{0.75cm} % Indentasi 0.75cm pada tiap paragraf
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\usepackage{ifthen}
+\fancyfoot[R]{\thepage}
+
+\usepackage[labelsep=quad]{caption}
+\captionsetup[table]{skip=5pt}
+
+\usepackage{multirow}
+\usepackage{longtable}
+
+
+
+
+%%% Pewarnaan code
+\usepackage{color}
+\usepackage{listings}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codeblack}{rgb}{0,0,0}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codeblack},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+%%% Pewarnaan code
+
+\hypersetup{ % Merubah warna link
+    colorlinks,
+    linkcolor={black},
+    citecolor={black},
+    urlcolor={black}
+}
+
+% \tolerance=1
+% \emergencystretch = \maxdimen
+% \hyphenpenalty=10000
+% \hbadness=1000
+
+\usepackage[utf8]{inputenc}
+\usepackage{cite}
+
+\begin{document}
+
+% input data
+\input{file/TA-data}
+\BagianAwal
+\LembarJudul
+\LembarPengesahan
+%%%%%%%%%%%%%%%%%%%%%%%%  Abstrak  %%%%%%%%%%%%%%%5%%%%%%%%%%
+
+\begin{Abstrak}
+% isi abstrak indo
+\katakunci{.}
+
+\end{Abstrak}
+
+\begin{Abstract} 
+% isi abstrak inggris
+\keywords{.}
+
+\end{Abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%  Abstrak  %%%%%%%%%%%%%%%5%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%  Daftar  %%%%%%%%%%%%%%%5%%%%%%%%%%
+
+\DaftarIsi\raggedbottom
+
+\DaftarGambar
+
+\DaftarTabel
+
+\DaftarSimbol
+\begin{flushleft}
+\begin{tabular}{lrl}
+
+
+$\oplus$ &:& Operasi \textit{max} dalam aljabar max-plus\\
+
+\end{tabular}
+\end{flushleft}
+%%%%%%%%%%%%%%%%%%%%%%%%  Daftar  %%%%%%%%%%%%%%%5%%%%%%%%%%
+
+\BagianInti
+
+%%%%%%%%%%%%%%%%%%%%%%%%  Bab I  %%%%%%%%%%%%%%%5%%%%%%%%%%
+\chapter{PENDAHULUAN}
+\indent ...
+\section{Latar Belakang}
+
+\indent Banjir merupakan salah satu bencana yang sering terjadi di wilayah perkotaan, termasuk Kota Surabaya. Sebagai kota terbesar kedua di Indonesia dengan tingkat urbanisasi yang tinggi, Surabaya menghadapi tantangan serius dalam pengelolaan tata air dan sistem drainase. Setiap musim hujan, beberapa kawasan seperti Rungkut, Pakal, dan Tambaksari sering mengalami genangan yang mengganggu aktivitas masyarakat serta menyebabkan kerugian ekonomi dan kerusakan infrastruktur.
+
+Faktor penyebab banjir di Surabaya cukup kompleks, meliputi curah hujan yang tinggi, kondisi topografi yang datar, penyempitan saluran drainase, serta berkurangnya daerah resapan akibat pembangunan yang masif. Oleh karena itu, diperlukan pendekatan berbasis data untuk memahami pola kejadian banjir dan memperkirakan kemungkinan terjadinya di masa depan.
+
+Prediksi banjir dengan bantuan metode statistik maupun \textit{machine learning} dapat menjadi solusi preventif yang lebih efektif. Dengan memanfaatkan data meteorologis dari BMKG seperti curah hujan, suhu udara, kelembapan, kecepatan dan arah angin, serta tekanan udara, model prediksi dapat membantu pemerintah kota dalam mengambil keputusan cepat untuk mitigasi bencana. Selain itu, hasil prediksi juga dapat digunakan sebagai sistem peringatan dini (\textit{early warning system}) bagi masyarakat agar dapat melakukan langkah antisipatif lebih awal.
+
+Penelitian ini bertujuan untuk memprediksi potensi terjadinya banjir di Kota Surabaya berdasarkan data BMKG menggunakan model \textit{hybrid} LSTM--XGBoost. Melalui pendekatan \textit{hybrid} ini, diharapkan diperoleh model yang mampu menangkap pola temporal dan non-linear secara lebih akurat dibandingkan model tunggal. Hasil penelitian ini diharapkan dapat memberikan kontribusi dalam pengembangan sistem prediksi banjir yang adaptif, mendukung pengambilan keputusan oleh pemerintah daerah, serta meningkatkan ketahanan Kota Surabaya terhadap perubahan iklim dan cuaca ekstrem.
+
+\section{Rumusan Masalah}
+Berdasarkan latar belakang yang telah dibahas sebelumnya, didapat rumusan masalah pada topik ini adalah sebagai berikut.
+\begin{enumerate} % Enumerate digunakan untuk membuat list angka
+    \item Bagaimana karakteristik data cuaca dari BMKG, seperti curah hujan, suhu udara, kelembapan udara, kecepatan dan arah angin, serta tekanan udara di Kota Surabaya selama periode penelitian?
+    \item Bagaimana membangun model prediksi banjir di Surabaya dengan memanfaatkan data cuaca dari BMKG?
+    \item Bagaimana kinerja model machine learning hybrid LSTM–XGBoost dibandingkan dengan model tunggal dalam memprediksi kejadian banjir?
+    \item Sejauh mana model hybrid tersebut mampu memberikan hasil prediksi yang akurat dan dapat digunakan sebagai dasar sistem peringatan dini (early warning system) di Surabaya?Editor mode.
+\Judul{Prediksi Banjir dengan model hybrid LSTM-XGBOOST Daerah Kota SURABAYA}
+\JudulEng{Flood Prediction Using a Hybrid LSTM-XGBoost Model for Surabaya City}
+\Nama{Nama}
+\NamaKecil{Nama}
+\NRP{500....}
+\Departemen{Departemen}
+\Department{Department}
+\BidangStudi{RMK}
+\Bulan{Februari} % Masuk lembar pengesahan
+\Tahun{2023}
+\TanggalDisetujui{23 Juni 2022} % Masuk lembar orisinilitas
+\Fakultas{Sains dan Analitika Data}
+\SingkatanFakultas{FSAD}
+\Faculty{Scientics}
+\SingkatanFakultasEng{SCIENTICS}
+\Pembimbing{Pembimbing 1}
+          {} % Isi {} untuk pembimbing 2
+		   
+\NIPPembimbing{NIP}
+{} % Isi {} untuk pembimbing 2
+              
+              
+\Penguji{Penguji 1}
+        {Penguji 2}
+        {Penguji 3}
+\NIPPenguji{NIP Penguji 1}
+           {NIP Penguji 2}
+           {NIP Penguji 3}
+\Kadep{Nama Kadept}
+\NIPKadep{NIP Pak Kadept}
+edit
+Editing
+\end{enumerate}
+
+\section{Batasan Masalah}
+Penelitian Tugas Akhir ini memiliki beberapa batasan untuk memastikan fokus dan keterarahannya, yaitu:
+\begin{enumerate} % Enumerate digunakan untuk membuat list angka
+    \item Data yang digunakan berasal dari BMKG dan mencakup variabel meteorologis seperti curah hujan, suhu udara, kelembapan, kecepatan dan arah angin, serta tekanan udara di wilayah Surabaya.
+    \item Periode data yang digunakan dibatasi sesuai ketersediaan data BMKG dan data banjir yang konsisten (misalnya tahun 2015–2024).
+    \item Analisis dilakukan menggunakan metode machine learning dengan pendekatan model hybrid, tanpa mempertimbangkan faktor non-meteorologis lain seperti kondisi drainase atau perilaku masyarakat.
+\end{enumerate}
+
+\section{Tujuan}
+Tujuan dari penelitian Tugas Akhir ini adalah sebagai berikut:
+\begin{enumerate} % Enumerate digunakan untuk membuat list angka
+    \item Menganalisis karakteristik data cuaca dari BMKG di Kota Surabaya, seperti curah hujan, suhu udara, kelembapan, kecepatan dan arah angin, serta tekanan udara.
+    \item Mengembangkan model prediksi banjir berbasis machine learning dengan memanfaatkan data meteorologis dari BMKG.
+    \item Menerapkan dan membandingkan kinerja model hybrid LSTM–XGBoost dengan model tunggal untuk memprediksi kejadian banjir di Surabaya.
+    \item Mengevaluasi tingkat akurasi dan performa model hybrid dalam mendeteksi potensi banjir sebagai dasar sistem peringatan dini (early warning system).
+\end{enumerate}
+
+\section{Manfaat}
+Manfaat yang diharapkan dalam penelitian Tugas Akhir ini adalah sebagai berikut:
+\begin{enumerate} % Enumerate digunakan untuk membuat list angka
+    \item Memberikan kontribusi dalam pengembangan model prediksi banjir berbasis data meteorologis dengan pendekatan LSTM–XGBoost hybrid.
+    \item Meningkatkan akurasi dan efisiensi dalam memprediksi potensi banjir di wilayah perkotaan, khususnya Kota Surabaya.
+    \item Berkontribusi terhadap pengembangan kajian ilmiah di bidang penerapan machine learning untuk analisis data cuaca dan mitigasi bencana.
+    \item Menjadi dasar bagi pengembangan sistem peringatan dini (early warning system) yang adaptif terhadap perubahan iklim dan cuaca ekstrem.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%  Bab I  %%%%%%%%%%%%%%%5%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%  Bab II  %%%%%%%%%%%%%%%5%%%%%%%%%%
+
+\pagebreak
+\chapter{TINJAUAN PUSTAKA}
+
+\section{Penelitian Terdahulu}
+\indent Beberapa penelitian terkait prediksi banjir menggunakan metode \textit{machine learning} telah banyak dilakukan, baik di dalam maupun luar negeri. Setiap penelitian memiliki pendekatan dan karakteristik data yang berbeda sesuai dengan kondisi wilayah dan tujuan analisisnya.
+
+Fitriyaningsih (2019) melakukan penelitian berjudul \textit{Prediksi Kejadian Banjir dengan Ensemble Machine Learning menggunakan BP-NN dan SVM}. Penelitian ini menggunakan data hidrometeorologi untuk memprediksi potensi banjir dengan menggabungkan dua algoritma \textit{machine learning}, yaitu Backpropagation Neural Network (BP-NN) dan Support Vector Machine (SVM). Hasil penelitian menunjukkan bahwa kombinasi model tersebut dapat meningkatkan akurasi dibandingkan dengan model tunggal. 
+
+Jailani dan Nurmadewi (2024) dalam penelitiannya berjudul \textit{Hybrid Machine Learning Predicts Flooding Using LSTM and Random Forests on Geodata} mengembangkan model hibrida dengan menggabungkan Long Short-Term Memory (LSTM) dan Random Forest. Penelitian ini menunjukkan bahwa model hybrid mampu menangkap pola temporal dari data curah hujan sekaligus mempertimbangkan hubungan non-linear antarsvariabel, sehingga menghasilkan prediksi banjir yang lebih stabil dan akurat.
+
+Li \textit{dkk}. (2021) dalam jurnal \textit{Assessing Surface Water Flood Risks in Urban Areas Using Machine Learning} menerapkan metode \textit{machine learning} untuk menilai risiko banjir di kawasan perkotaan. Dengan menggunakan data curah hujan dan kondisi permukaan tanah, penelitian ini membuktikan bahwa model Gradient Boosting dan Random Forest efektif dalam mengidentifikasi area berisiko tinggi terhadap banjir.
+
+Selain itu, Gao \textit{dkk}. (2024) mengembangkan model prediksi banjir cepat (\textit{rapid flood forecast}) pada kota-kota di sepanjang Sungai Yangtze menggunakan pendekatan \textit{machine learning}. Penelitian tersebut menekankan pentingnya integrasi data spasial dan temporal untuk meningkatkan akurasi prediksi di wilayah perkotaan dengan kondisi topografi yang bervariasi.
+
+Dari berbagai penelitian tersebut, dapat disimpulkan bahwa penggunaan \textit{machine learning}, terutama dalam bentuk model hybrid, menunjukkan potensi besar dalam memprediksi kejadian banjir. Namun, sebagian besar penelitian masih berfokus pada wilayah di luar Indonesia atau menggunakan data non-BMKG. Oleh karena itu, penelitian ini akan mengembangkan model hybrid berbasis data meteorologis BMKG untuk memprediksi potensi banjir di Kota Surabaya, yang diharapkan dapat memberikan pendekatan yang lebih kontekstual dan relevan dengan kondisi lokal.
+
+\section{Long Short-Term Memory}
+Long Short-Term Memory (LSTM) merupakan salah satu jenis Recurrent Neural Network (RNN) yang dirancang khusus untuk menangani masalah \textit{vanishing gradient} pada RNN standar dan mampu mempelajari dependensi jangka panjang dalam data deret waktu. LSTM diperkenalkan oleh Hochreiter dan Schmidhuber (1997) dan sejak itu banyak digunakan untuk aplikasi yang memerlukan pemodelan urutan, seperti prediksi cuaca, keuangan, dan sistem peringatan bencana.
+
+Dalam konteks prediksi banjir, LSTM sangat berguna karena mampu menangkap pola temporal dari data meteorologis, misalnya curah hujan harian, kelembapan, suhu, dan variabel cuaca lainnya yang berpengaruh terhadap risiko banjir. Dengan memanfaatkan \textit{memory cell}, \textit{input gate}, \textit{forget gate}, dan \textit{output gate}, LSTM dapat menyimpan informasi penting dari waktu sebelumnya dan mengabaikan informasi yang tidak relevan. Hal ini memungkinkan model untuk mengenali pola hujan ekstrem atau hujan berulang yang menjadi indikator terjadinya banjir.
+
+Beberapa penelitian telah menunjukkan keunggulan LSTM dalam prediksi hidrometeorologi. Jailani dan Nurmadewi (2024) menggunakan LSTM dalam model hybrid untuk mengekstrak fitur temporal dari data curah hujan sebelum diteruskan ke Random Forest, dan hasilnya menunjukkan peningkatan akurasi dibandingkan dengan model tunggal. Dengan demikian, LSTM tidak hanya mampu melakukan prediksi \textit{time series}, tetapi juga berfungsi sebagai \textit{feature extractor} yang kuat dalam sistem prediksi banjir berbasis \textit{machine learning} hybrid.
+
+Selain itu, LSTM dapat dioptimalkan dengan beberapa teknik tambahan, seperti \textit{dropout}, \textit{batch normalization}, dan \textit{stacked LSTM} untuk meningkatkan kemampuan generalisasi serta mengurangi \textit{overfitting}. Penggunaan LSTM sebagai bagian dari model hybrid memberikan keuntungan ganda: menangkap pola temporal secara mendalam dan menyediakan fitur yang representatif untuk tahap klasifikasi berikutnya menggunakan model lain, seperti XGBoost.
+
+\section{XGBoost}
+Extreme Gradient Boosting (XGBoost) merupakan salah satu algoritma ensemble learning berbasis gradient boosting yang dikembangkan oleh Chen dan Guestrin (2016). Algoritma ini membangun model prediksi secara bertahap dengan menggabungkan banyak weak learners (biasanya pohon keputusan) menjadi satu model yang kuat. Keunggulan utama XGBoost adalah kemampuan menangani data non-linear, mengelola fitur yang heterogen, serta performa komputasi yang efisien bahkan pada dataset besar.
+
+Dalam konteks prediksi banjir, XGBoost digunakan untuk melakukan klasifikasi kejadian banjir berdasarkan fitur meteorologis dan/atau fitur tambahan yang diekstrak dari model LSTM. Li dkk. (2021) dan Gao dkk. (2024) menunjukkan bahwa model berbasis XGBoost efektif dalam memprediksi risiko banjir perkotaan, karena algoritma ini dapat menangkap interaksi kompleks antarvariabel cuaca dan faktor lingkungan yang memengaruhi terjadinya genangan atau banjir.
+
+Keunggulan XGBoost juga terletak pada kemampuannya dalam menangani data yang tidak seimbang, misalnya jumlah hari tanpa banjir jauh lebih banyak daripada hari dengan banjir, dengan menggunakan teknik oversampling. Selain itu, XGBoost menyediakan metrik evaluasi internal dan feature importance, sehingga peneliti dapat menilai kontribusi masing-masing variabel input terhadap prediksi banjir.
+
+Penggabungan LSTM dan XGBoost dalam model hybrid memanfaatkan kelebihan masing-masing: LSTM mengekstrak pola temporal dari data deret waktu, sementara XGBoost melakukan klasifikasi akhir dengan memanfaatkan fitur non-linear yang kaya. Jailani dan Nurmadewi (2024) membuktikan bahwa pendekatan hybrid semacam ini meningkatkan akurasi prediksi dan kestabilan model dibandingkan penggunaan LSTM atau XGBoost secara tunggal, sehingga sangat relevan untuk diterapkan dalam sistem peringatan dini banjir perkotaan.
+
+\section{Long Short Term Memory and XG-Boost Hybrid}
+Penggabungan Long Short-Term Memory (LSTM) dan XGBoost merupakan pendekatan \textit{hybrid machine learning} yang memanfaatkan keunggulan masing-masing metode untuk meningkatkan akurasi prediksi pada masalah klasifikasi maupun regresi berbasis data deret waktu. LSTM digunakan untuk menangkap pola temporal dari data deret waktu, sedangkan XGBoost berperan sebagai \textit{classifier} atau \textit{regressor} akhir yang mampu menangani hubungan non-linear antarfitur serta meningkatkan kemampuan generalisasi model.
+
+Dalam konteks prediksi banjir, data meteorologis seperti curah hujan, suhu udara, kelembapan, tekanan udara, dan kecepatan angin memiliki karakteristik temporal yang kompleks. LSTM mampu mempelajari pola berulang, tren musiman, dan kejadian ekstrem dalam data tersebut, sehingga menghasilkan representasi fitur yang kaya dan informatif. Fitur ini kemudian digunakan sebagai input tambahan pada XGBoost, bersama dengan fitur statistik lain seperti rata-rata curah hujan beberapa hari sebelumnya atau nilai maksimum dan minimum harian, untuk melakukan klasifikasi banjir secara lebih akurat.
+
+Pendekatan hybrid ini terbukti meningkatkan performa prediksi dibandingkan model tunggal. Jailani dan Nurmadewi (2024) menunjukkan bahwa model LSTM--Random Forest (varian hybrid yang mirip dengan LSTM--XGBoost) mampu mengidentifikasi potensi banjir dengan akurasi lebih tinggi dan lebih stabil dibandingkan hanya menggunakan LSTM atau Random Forest secara terpisah. Hal ini disebabkan oleh kemampuan LSTM dalam mengekstrak informasi temporal yang kemudian diproses oleh XGBoost untuk menangkap hubungan non-linear yang kompleks, sehingga model menjadi lebih adaptif terhadap variasi data yang tinggi.
+
+Selain itu, model hybrid juga memberikan fleksibilitas dalam menghadapi data yang tidak seimbang, misalnya ketika jumlah hari tanpa banjir jauh lebih banyak dibandingkan hari dengan banjir. XGBoost memiliki mekanisme seperti \textit{scale\_pos\_weight} atau \textit{sample weighting} yang membantu model tetap sensitif terhadap kejadian langka (banjir), sementara LSTM tetap mengekstrak pola dari data urutan harian. Kombinasi ini menghasilkan sistem prediksi yang lebih robust dan cocok untuk aplikasi \textit{early warning system} di wilayah perkotaan.
+
+Dengan demikian, model hybrid LSTM--XGBoost menjadi pendekatan yang sangat relevan untuk penelitian ini, di mana tujuan utamanya adalah memprediksi kemungkinan terjadinya banjir di Kota Surabaya menggunakan data BMKG. Pendekatan ini tidak hanya meningkatkan akurasi prediksi, tetapi juga memungkinkan integrasi berbagai jenis fitur, baik temporal maupun statistik, sehingga model lebih komprehensif dan adaptif terhadap kondisi cuaca ekstrem.
+
+% (\ref*{pers1}). % Merujuk persamaan tinggal menuliskan labelnya
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%  Bab II  %%%%%%%%%%%%%%%5%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%  Bab III  %%%%%%%%%%%%%%%5%%%%%%%%%%
+
+\pagebreak
+\chapter{METODOLOGI}
+Pada bab ini akan dijelaskan secara umum mengenai urutan pelaksanaan Tugas Akhir dengan langkah-langkah yang dilakukan ditunjukkan pada diagram alir \ref{diagramalir}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{foto/BlockDiagram.png}
+	\caption{Diagram Alir Metodologi.}
+	\label{diagramalir}
+\end{figure}
+\section{Studi Literatur}
+...
+
+\section{}
+...
+
+
+\section{}
+...
+
+\section{}
+...
+
+\section{Penulisan Tugas Akhir}
+...
+
+\section{Jadwal Kegiatan}
+...
+	\\
+	% Membuat tabel
+%  \begin{table}[H]
+%  \caption{Jadwal Kegiatan}
+%  \centering
+% 	\begin{tabular}{|C{0.6cm}|L{5.7cm}|C{0.25cm}|C{0.25cm}|C{0.25cm}|C{0.25cm}|C{0.25cm}|C{0.25cm}|C{0.25cm}|C{0.25cm}|C{0.25cm}|C{0.25cm}|C{0.25cm}|C{0.25cm}|}	\hline
+		
+% 		&&\multicolumn{12}{c|}{\textbf{BULAN}}\\\cline{3-14}
+% 		\multicolumn{1}{|c|}{\textbf{NO}}&\multicolumn{1}{c|}{\textbf{NAMA KEGIATAN}}&\multicolumn{4}{c|}{1}&\multicolumn{4}{c|}{2}&\multicolumn{4}{c|}{3}\\\cline{3-14}
+% 		&&1&2&3&4&1&2&3&4&1&2&3&4\\\cline{1-14}
+		
+% 1&Studi literatur&\cellcolor{black!}&\cellcolor{black!}&&&&&&&&&&\\\hline
+% 2&Identifikasi \textit{cyclicity Latin square} dalam aljabar max-plus&&&\cellcolor{black!}&\cellcolor{black!}&\cellcolor{black!}&&&&&&&\\\hline
+% 3&Identifikasi \textit{transient Latin square} dalam aljabar max-plus&&&&&\cellcolor{black!}&\cellcolor{black!}&\cellcolor{black!}&&&&&\\\hline
+% 4&Penarikan kesimpulan&&&&&&&&\cellcolor{black!}&\cellcolor{black!}&\cellcolor{black!}&&\\\hline
+% 5&Penulisan laporan tugas akhir&&&&&&&&\cellcolor{black!}&\cellcolor{black!}&\cellcolor{black!}&\cellcolor{black!}&\cellcolor{black!}\\\hline
+% \end{tabular}
+% \label{TabelJadwalKegiatan}
+% \end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%  Bab III  %%%%%%%%%%%%%%%5%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%  Dapus  %%%%%%%%%%%%%%%5%%%%%%%%%%
+
+\pagebreak
+\renewcommand{\bibname}{Daftar Pustaka}
+\bibliographystyle{IEEEtran} 
+\bibliography{daftarPustaka}
+\nocite{*}  % Memaksa semua entry di .bib muncul
+\end{document}
