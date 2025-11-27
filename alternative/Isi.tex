@@ -1,0 +1,269 @@
+\chapter{METODE PENELITIAN}
+\label{chap:metodepenelitian}
+
+\section{Langkah-langkah Pemodelan}
+\label{sec:langkah-langkahpemodelan}
+
+\subsection{Objek}
+\label{subsec:objek}
+Adapun objek yang kita modelkan yaitu "Penyebaran penyalahguna narkoba di Indonesia dengan mempertimbangkan usaha rehabilitasi".
+
+\subsection{Fenomena}
+\label{subsec:fenomena}
+Fenomena yang kita gunakan dalam pemodelan "Penyebaran penyalahguna narkoba di Indonesia dengan mempertimbangkan usaha rehabilitasi" yaitu:
+ \begin{enumerate}
+
+    \item Setiap individu di segala usia berpotensi terpapar penyalahgunaan narkoba
+    \item Setiap individu rentan dapat terpapar penyalahgunaan narkoba melalui interaksi dengan penyalahguna narkoba
+    \item Banyaknya penyalahguna narkoba di lingkungan sosial dapat meningkatkan laju kenaikan jumlah penyalahguna narkoba
+    \item Penyalahguna narkoba diarahkan untuk menjalani proses rehabilitasi
+    \item Rehabilitasi dilakukan dalam bentuk rawat jalan dan rawat inap
+    \item Penggunaan narkoba secara berlebihan dapat menyebabkan kematian
+    \item Setiap individu dapat sembuh dan berhenti menggunakan narkoba secara permanen
+    \item Pasien rehabilitasi berpotensi berhenti mengikuti proses rehabilitasi
+    \item Pasien rehabilitasi dapat berpindah dari rehabilitasi rawat jalan ke rawat inap, dan sebaliknya
+    \item Laju rekrutmen pasien rehabilitasi dipengaruhi oleh kapasitas rehabilitasi
+    
+\end{enumerate}
+
+\subsection{Hukum}
+\label{subsec:hukum}
+Pemodelan ini menggunakan hukum interaksi.
+\subsection{Asumsi}
+Asumsi yang kita gunakan yaitu:
+\begin{enumerate}
+\item Setiap individu yang berusia di atas 15 tahun berpotensi terpapar penyalahgunaan narkoba
+\item Setiap individu rentan dapat terpapar penyalahgunaan narkoba melalui interaksi dengan penyalahguna narkoba
+\item Banyaknya penyalahguna narkoba di lingkungan sosial tidak meningkatkan laju kenaikan jumlah penyalahguna narkoba
+\item Penyalahguna narkoba diarahkan untuk menjalani proses rehabilitasi
+\item Rehabilitasi dilakukan dalam bentuk rawat jalan dan rawat inap
+\item Penggunaan narkoba secara berlebihan dapat menyebabkan kematian
+\item Setiap individu dapat sembuh dan berhenti menggunakan narkoba secara permanen setelah melakukan rehabilitasi.
+\item Pasien rehabilitasi berpotensi berhenti mengikuti proses rehabilitasi
+\item Pasien rehabilitasi dapat berpindah dari rehabilitasi rawat jalan ke rawat inap, dan sebaliknya
+\item Laju rekrutmen pasien rehabilitasi tidak dipengaruhi oleh kapasitas rehabilitasi
+
+\end{enumerate}
+
+\subsection{Variabel}
+\label{subsec:variabel}
+Variabel yang ada pada pemodelan ini antara lain:
+\renewcommand{\arraystretch}{1.125}
+\begingroup
+\allowdisplaybreaks
+\begin{table}[H]
+\begin{center}
+%% increase table row spacing, adjust to taste
+\renewcommand{\arraystretch}{1.125}
+\caption{Variabel}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\ Variabel \ & Keterangan \\
+\hline
+$S(t)$ & $\begin{matrix}\text{Proporsi individu yang  } \\
+\text{ rentan terpapar penyalahgunaan } \\
+\text{narkoba pada tahun ke t}\end{matrix}$\\
+\hline
+$U(t)$ & $\begin{matrix}\text{Proporsi individu penyalahguna } \\
+\text{narkoba yang tidak menjalani} \\
+\text{rehabilitasi pada tahun ke t}\end{matrix}$\\
+\hline
+$R_{op}(t)$ & $\begin{matrix}\text{Proporsi individu penyalahguna } \\
+\text{ \ narkoba yang menjalani rehabilitasi \ }\\
+\text{ rawat jalan pada tahun ke t}\end{matrix}$ \\
+\hline
+$R_{ip}(t)$ & $\begin{matrix}\text{Proporsi individu penyalahguna } \\
+\text{narkoba yang menjalani rehabilitasi}\\
+\text{ rawat inap pada tahun ke t}\end{matrix}$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\endgroup
+
+
+\subsection{Parameter}
+
+Parameter yang ada pada pemodelan ini antara lain:
+
+\begingroup
+\allowdisplaybreaks
+\begin{table}[H]
+\begin{center}
+%% increase table row spacing, adjust to taste
+\renewcommand{\arraystretch}{1.125}
+\caption{Parameter}
+\centering
+\begin{tabular}{|c|p{10cm}|}
+\hline
+\ Parameter \  & Keterangan \\
+\hline
+$\Lambda$ & $\begin{matrix}\text{\ Jumlah individu yang masuk ke sistem}\end{matrix}$ \\
+\hline
+$\beta_1$ & $\begin{matrix}\text{\ Laju penularan melalui interaksi S-U}\end{matrix}$ \\
+\hline
+$\beta_2$ & $\begin{matrix}\text{\ Laju penularan melalui interaksi S-Rop}\end{matrix}$ \\
+\hline
+$\mu$ & $\begin{matrix}\text{\ Laju kematian alami}\end{matrix}$ \\
+\hline
+$\rho_1$ & $\begin{matrix}\text{\ Laju relapse (kambuh) dari Rop}\end{matrix}$ \\
+\hline
+$\rho_2$ & $\begin{matrix}\text{\ Laju relapse (kambuh) dari Rip}\end{matrix}$ \\
+\hline
+$P$ & $\begin{matrix}\text{\ Proporsi pengguna yang masuk rawat inap}\end{matrix}$ \\
+\hline
+$\alpha$ & $\begin{matrix}\text{\ Laju rekrutmen rehabilitasi dari U}\end{matrix}$ \\
+\hline
+$\gamma_1$& \ Laju transisi Rop ke Rip \\
+\hline
+
+$\gamma_2$ & \ Laju transisi Rip ke Rop \\
+\hline
+$\delta_1$ & $\begin{matrix}\text{\ Laju pemulihan dari Rop}\end{matrix}$ \\
+\hline
+$\delta_2$ & $\begin{matrix}\text{\ Laju pemulihan dari Rip}\end{matrix}$ \\
+\hline
+$\theta$ & $\begin{matrix}\text{\ Laju kematian U akibat narkoba}\end{matrix}$ \\
+\hline
+
+
+\end{tabular}
+\end{center}
+\end{table}
+\endgroup
+\subsection{Diagram Kompartemen}
+\label{subsec:diagramkompartemen}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Untitled_Diagram.drawio__1_-removebg-preview (1).png}
+    \caption{Diagram Model}
+    \label{fig:enter-label}
+\end{figure}
+
+
+\subsection{Model}
+
+\begin{align*}
+\dfrac{dS}{dt} &= \Lambda - \beta_1 SU - \beta_2 S R_{op} - \mu S, \\
+\dfrac{dU}{dt} &= \beta_1 SU + \beta_2 S R_{op} + \rho_1 R_{op} + \rho_2 R_{ip} - (\mu + \alpha + \theta)U, \\
+\dfrac{dR_{op}}{dt} &= \gamma_2 R_{ip} - (\mu + \gamma_1 + \rho_1 + \delta_1)R_{op} + (1 - p)\alpha U, \\
+\dfrac{dR_{ip}}{dt} &= \gamma_1 R_{op} - (\mu + \gamma_2 + \rho_2 + \delta_2)R_{ip} + p\alpha U.
+\end{align*}
+
+
+\subsection{ Nilai Parameter}
+
+Nilai parameter yang ada pada pemodelan ini antara lain:
+
+\begingroup
+\allowdisplaybreaks
+\begin{table}[H]
+\begin{center}
+%% increase table row spacing, adjust to taste
+\renewcommand{\arraystretch}{1.125}
+\caption{Tabel Parameter}
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\ Parameter \  & Nilai \\
+\hline
+$\Lambda$ & $\begin{matrix}\text{\ 0.0209}\end{matrix}$ \\
+\hline
+$\beta_1$ & $\begin{matrix}\text{\ 0.0411}\end{matrix}$ \\
+\hline
+$\beta_2$ & $\begin{matrix}\text{\ 0.063}\end{matrix}$ \\
+\hline
+$\mu$ & $\begin{matrix}\text{\ 0.00749}\end{matrix}$ \\
+\hline
+$\rho_1$ & $\begin{matrix}\text{\ 0.0382}\end{matrix}$ \\
+\hline
+$\rho_2$ & $\begin{matrix}\text{\ 0.002}\end{matrix}$ \\
+\hline
+$P$ & $\begin{matrix}\text{\ 0.352}\end{matrix}$ \\
+\hline
+$\alpha$ & $\begin{matrix}\text{\ 0.02827}\end{matrix}$ \\
+\hline
+$\gamma_1$& \ 0.02961 \\
+\hline
+
+$\gamma_2$ & \ 0.003 \\
+\hline
+$\delta_1$ & $\begin{matrix}\text{\ 0.01}\end{matrix}$ \\
+\hline
+$\delta_2$ & $\begin{matrix}\text{\ 0.3142}\end{matrix}$ \\
+\hline
+$\theta$ & $\begin{matrix}\text{\ 0.005}\end{matrix}$ \\
+\hline
+
+
+\end{tabular}
+\end{center}
+\end{table}
+\endgroup
+
+
+\subsection{Simulasi Model}
+tolong yang ada file simulasinya bantu masukin ya
+
+
+\subsection{Titik Kesetimbangan Bebas Narkoba}
+\begin{align*}
+\frac{dS}{dt} &= \frac{dU}{dt} = \frac{dR_{op}}{dt} = \frac{dR_{ip}}{dt} = U = R_{op} = R_{ip} = 0
+\end{align*}
+
+% Garis panah menggunakan downarrow
+\begin{center}
+$\downarrow$
+\end{center}
+
+\begin{align*}
+S &= \frac{\Lambda}{\mu} = 2.7903
+\end{align*}
+
+% Garis panah menggunakan downarrow
+\begin{center}
+$\downarrow$
+\end{center}
+
+\begin{align*}
+(S, U, R_{op}, R_{sp}) &= (2.7903, 0, 0, 0)
+\end{align*}
+
+\subsection{Linearisasi Model}
+\begin{equation*}
+\dot{Y} = A^* Y
+\end{equation*}
+
+\begin{equation*}
+\begin{pmatrix}
+\dfrac{dS}{dt} \\[8pt]
+\dfrac{dU}{dt} \\[8pt]
+\dfrac{dR_{op}}{dt} \\[8pt]
+\dfrac{dR_{tp}}{dt}
+\end{pmatrix}
+=
+\begin{pmatrix}
+-0.0075 & -0.1231 & -0.1758 & 0 \\
+0 & 0.0823 & 0.2140 & 0.0020 \\
+0 & 0.0183 & -0.0853 & 0.0030 \\
+0 & 0.0099 & 0.0296 & -0.3267
+\end{pmatrix}
+\begin{pmatrix}
+S \\[4pt]
+U \\[4pt]
+R_{op} \\[4pt]
+R_{tp}
+\end{pmatrix}
+\end{equation*}
+
+\subsection{Analisis Kestabilan Model Linear}
+Analisis kestabilan model linear berdasarkan nilai eigen matriks \( A^* \) sebagai berikut:
+
+\begin{equation*}
+(\lambda_1, \lambda_2, \lambda_3, \lambda_4) = (-0.0075, 0.1032, -0.1059, -0.3270)
+\end{equation*}
+
+Karena terdapat nilai eigen positif (\( \lambda_2 = 0.1032 > 0 \)), maka:
+
+\textbf{Model linear tidak stabil}

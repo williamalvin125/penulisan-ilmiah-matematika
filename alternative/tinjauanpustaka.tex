@@ -1,0 +1,96 @@
+\chapter{TINJAUAN PUSTAKA}
+\label{chap:tinjauanpustaka}
+Penelitian mengenai penyebaran penyalahgunaan narkoba telah banyak dikasi melalui pendekatan pemodelan matematika untuk memahami dinamika interaksi antar kelompok dalam polukasi. Salah satu penelitian yang dilakukan oleh Mushanyu(2018) yang mengembangkan model penyebaran penyalahgunaan narkoba dengan mempertimbangkan efek imitasi sosial serta keterbatasan kapasitas rehabilitasi. Model tersebut menunjukkan bahwa peningkatan kapasitas rehabilitasi dapat mengurangi jumlah penyalahguna narkoba dalam jangka panjang
+
+\section{Penelitian Terdahulu}
+Beberapa studi kunci yang menjadi acuan dalam presentasi ini adalah karya-karya Mushanyu dan rekan (2018) yang mengeksplorasi penyebaran penyalahgunaan narkoba dengan mempertimbangkan faktor imitasi sosial dan keterbatasan kapasitas rehabilitasi. Ringkasan rujukan utama adalah sebagai berikut:
+
+\begin{itemize}[leftmargin=*,itemsep=6pt]
+    \item Mushanyu (2018): Mengembangkan model \textit{epidemic-like} yang memasukkan mekanisme imitasi sosial dan membahas bagaimana kapasitas rehabilitasi mempengaruhi efektivitas intervensi. Model ini menjadi acuan utama untuk modifikasi pada presentasi kelompok. 
+    \item Mushanyu \& Nyabadza (2018): Memaparkan model berstruktur risiko (\textit{risk-structured model}) yang membagi populasi berdasarkan tingkat risiko, dan menjelaskan pola transisi antar-kompartemen yang relevan untuk memahami dinamika penyalahgunaan.
+    \item Sumber data dan laporan kebijakan nasional: Dokumen BNN (Infografis P4GN), data demografi BPS (jumlah penduduk menurut kelompok umur), serta laporan rumah sakit dan statistik mortalitas yang digunakan sebagai sumber nilai parameter atau validasi asumsi.
+\end{itemize}
+
+\section{Temuan Penelitian yang Relevan}
+Berdasarkan kajian literatur utama (khususnya karya Mushanyu dan rekan), ada beberapa temuan penting yang relevan untuk pengembangan model:
+\begin{enumerate}[leftmargin=*,itemsep=4pt]
+    \item Interaksi sosial dan imitasi dapat mempercepat penyebaran perilaku penyalahgunaan narkoba di antara individu rentan.
+    \item Keterbatasan kapasitas rehabilitasi (misalnya jumlah tempat perawatan rawat inap) mengurangi efektivitas program rehabilitasi bila permintaan melebihi kapasitas.
+    \item Pembagian populasi menurut tingkat risiko (struktur risiko) mengubah pola transisi antara status rentan, pengguna, dan pasien rehabilitasi.
+\end{enumerate}
+
+Temuan-temuan tersebut menjadi landasan teori mengapa model kompartemental yang memuat kompartemen rehabilitasi dan \textit{relapse} relevan untuk dianalisis pada konteks Indonesia.
+
+\section{Modifikasi Model}
+Dibandingkan model awal, dilakukan beberapa modifikasi penting:
+\begin{enumerate}[leftmargin=*,itemsep=4pt]
+    \item Pada beberapa varian model, efek imitasi sosial diabaikan untuk menyederhanakan analisis sehingga transmisi difokuskan pada kontak langsung antara individu rentan dan pengguna.
+    \item Terdapat variasi model yang mengabaikan keterbatasan kapasitas rehabilitasi, sementara variasi lain memasukkan kembali pembatas kapasitas sebagai fungsi pembatas rekrutmen.
+    \item Ditambahkan laju kematian akibat narkoba sebagai komponen mortalitas spesifik pengguna, guna mempertajam representasi dinamika populasi.
+\end{enumerate}
+
+Tujuan modifikasi ini adalah menyeimbangkan kompleksitas matematis dengan ketersediaan data dan tujuan analisis (mis. memisahkan pengaruh rawat jalan vs rawat inap, mengeksplorasi peran \textit{relapse}, dan lain-lain).
+
+\section{Rekomendasi Pengembangan}
+\begin{itemize}[leftmargin=*,itemsep=4pt]
+    \item Model-model terdahulu (terutama karya Mushanyu et al.) memberikan kerangka kuat untuk memasukkan efek imitasi sosial dan pembatas kapasitas rehabilitasi.
+    \item Penerapan model pada konteks Indonesia membutuhkan penyesuaian asumsi dan estimasi parameter berbasis data lokal (BNN, BPS, data rumah sakit).
+    \item Rekomendasi pengembangan meliputi: (i) eksplorasi skenario dengan/ tanpa efek imitasi dan kapasitas; (ii) estimasi parameter dari data lapangan untuk validasi; (iii) analisis sensitivitas kuantitatif untuk mengidentifikasi parameter paling krusial.
+\end{itemize}
+
+\section{Stabilitas Dilihat dari Nilai Eigen}
+Analisis stabilitas merupakan salah satu konsep fundamental dalam kajian sistem dinamis, baik kontinu maupun diskrit. Secara umum, suatu sistem dikatakan stabil apabila solusi yang berada di sekitar titik kesetimbangan tetap berada di dekat titik tersebut atau kembali ke titik tersebut seiring berjalannya waktu. Dalam konteks sistem dinamis nonlinier, dua pendekatan yang sering digunakan adalah analisis nilai eigen dari matriks Jacobian dan metode linearisasi di sekitar titik kesetimbangan.
+
+Untuk sistem dinamis linear
+\begin{equation}
+    \dot{x}(t) = A x(t),
+\end{equation}
+perilaku solusi sepenuhnya ditentukan oleh nilai eigen matriks $A$. Jika $\lambda_1, \lambda_2, \dots, \lambda_n$ adalah nilai eigen dari $A$, maka solusi umum dapat dinyatakan sebagai
+\begin{equation}
+    x(t) = c_1 e^{\lambda_1 t} v_1 + c_2 e^{\lambda_2 t} v_2 + \dots + c_n e^{\lambda_n t} v_n,
+\end{equation}
+dengan $v_i$ adalah vektor eigen terkait.
+
+Kriteria stabilitasnya adalah sebagai berikut:
+\begin{enumerate}
+    \item Jika seluruh nilai eigen memenuhi $\Re(\lambda_i) < 0$, maka sistem \textbf{stabil asimtotik}.
+    \item Jika terdapat nilai eigen dengan $\Re(\lambda_i) > 0$, maka sistem \textbf{tidak stabil}.
+    \item Jika seluruh nilai eigen memenuhi $\Re(\lambda_i) \le 0$ dan sedikitnya satu dengan $\Re(\lambda_i) = 0$, maka kestabilan \textbf{bergantung pada orde Jordan} (disebut stabilitas netral atau kritis).
+\end{enumerate}
+
+Analisis nilai eigen memberikan cara yang sederhana dan efektif untuk menentukan kestabilan sistem linear. Oleh karena itu, metode ini juga digunakan untuk analisis awal pada sistem nonlinier melalui pendekatan linearisasi.
+
+\section{Linearisasi Sistem Dinamis Nonlinier}
+Pertimbangkan sistem nonlinier umum:
+\begin{equation}
+    \dot{x}(t) = f(x), \qquad x \in \mathbb{R}^n,
+\end{equation}
+dengan titik kesetimbangan $x^\ast$ yang memenuhi $f(x^\ast)=0$. Pendekatan linearisasi dilakukan dengan memperluas fungsi $f(x)$ menggunakan deret Taylor di sekitar titik keseimbangan:
+\begin{equation}
+    f(x) \approx f(x^\ast) + J_f(x^\ast)(x - x^\ast),
+\end{equation}
+di mana $J_f(x^\ast)$ adalah matriks Jacobian yang didefinisikan sebagai
+\begin{equation}
+    J_f(x^\ast) = 
+    \begin{bmatrix}
+        \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f_n}{\partial x_1} & \cdots & \frac{\partial f_n}{\partial x_n}
+    \end{bmatrix}_{x = x^\ast}.
+\end{equation}
+
+Karena $f(x^\ast)=0$, sistem dinamis dapat didekati oleh sistem linear:
+\begin{equation}
+    \dot{y}(t) = J_f(x^\ast) y(t),
+\end{equation}
+dengan $y(t) = x(t) - x^\ast$.
+
+\section{Stabilitas Sistem Nonlinier Berdasarkan Linearisasi}
+Untuk sistem nonlinier, kestabilan titik kesetimbangan dapat diprediksi berdasarkan sifat nilai eigen dari matriks Jacobian. Kriteria utamanya adalah:
+\begin{enumerate}
+    \item Jika seluruh nilai eigen dari $J_f(x^\ast)$ memenuhi $\Re(\lambda_i) < 0$, maka titik kesetimbangan \textbf{stabil asimtotik}.
+    \item Jika terdapat nilai eigen dengan $\Re(\lambda_i) > 0$, maka titik kesetimbangan \textbf{tidak stabil}.
+    \item Jika ada nilai eigen dengan $\Re(\lambda_i) = 0$, maka linearisasi \textbf{tidak cukup untuk menentukan stabilitas}; analisis lanjutan diperlukan seperti metode Lyapunov atau higher-order analysis.
+\end{enumerate}
+
+Pendekatan linearisasi ini sangat berguna karena dapat menyederhanakan analisis sistem nonlinier yang kompleks menjadi sistem linear yang lebih mudah dipelajari. Metode ini banyak digunakan dalam studi epidemiologi, dinamika populasi, dinamika penyalahgunaan narkoba, dan berbagai bidang rekayasa sistem.
